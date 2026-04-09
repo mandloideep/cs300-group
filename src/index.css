@@ -1,0 +1,105 @@
+:root {
+  color-scheme: light dark;
+
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #14213d;
+  --muted: #4f5d75;
+  --accent: #0a84ff;
+  --border: #d9e2ec;
+  --radius: 12px;
+  --space: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1321;
+    --surface: #1d2d44;
+    --text: #f6f9fc;
+    --muted: #c7d2e0;
+    --accent: #5bc0be;
+    --border: #2f415a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      color-mix(in srgb, var(--accent) 12%, transparent),
+      transparent 45%
+    ),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+#root {
+  width: min(900px, 100% - 2 * var(--space));
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 4px);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  #root {
+    width: min(100% - 1.5rem, 900px);
+    padding-block: 1.5rem;
+  }
+}
